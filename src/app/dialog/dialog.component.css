@@ -1,0 +1,20 @@
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+h2 {
+  color: rgb(45, 78, 139) !important;
+}
+
+.delete-box {
+  align-self: center;
+}
+
+mat-form-field {
+  display: block;
+  border-top: 1px;
+}
+
+button {
+  margin-left: 12%;
+}

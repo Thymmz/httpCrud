@@ -1,0 +1,36 @@
+<div class="employee-card">
+<mat-card class="employee">
+  <mat-card-header>
+    <mat-card-title>{{employee.firstName}} {{employee.lastName}}, {{employee.position}}</mat-card-title>
+    <mat-card-subtitle>Employee ID : {{employee.id}} Direct Reports : {{totalEmployeeReports}}</mat-card-subtitle>
+  </mat-card-header>
+</mat-card>
+</div>
+<table class="table-reports">
+  <thead>
+    <td>
+      Direct Reports:
+    </td>
+    <td> </td>
+  </thead>
+  <tbody>
+    <tr *ngIf="totalEmployeeReports == 0">
+      <td>This employee has no reports</td>
+      <td> </td>
+    </tr>
+    <tr *ngFor="let reportEmp of reportName">
+      <td>{{reportEmp.firstName}}
+      {{reportEmp.lastName}},
+      {{reportEmp.position}}
+      <span *ngIf="reportEmp.compensation">- Compensation = {{reportEmp.compensation}}</span></td>
+      <td class="table-buttons">
+        <button mat-raised-button class="btn btn-info" (click)="openDialog(reportEmp, 'update')"><i class="fa fa-edit"></i></button>
+        <button mat-raised-button class="btn btn-danger" (click)="openDialog(reportEmp, 'delete')"><i class="fa fa-minus"></i></button>
+      </td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+

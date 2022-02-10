@@ -1,0 +1,65 @@
+<div>
+<div class="update-box">
+<div *ngIf="data.updateDelete === 'delete'">
+<h2 mat-dialog-title>Delete Direct Report</h2>
+<mat-dialog-content>Permanently delete direct report {{data.reporter.firstName}} {{data.reporter.lastName}}?</mat-dialog-content>
+<mat-dialog-content>This action cannot be undone.</mat-dialog-content>
+<mat-dialog-actions class="delete-buttons">
+   <button mat-button (click)="deleteEmp(0)">Delete</button>
+   <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>
+</div>
+</div>
+
+<div class="update-box">
+<div *ngIf="data.updateDelete === 'update'">
+  <h2 mat-dialog-title>Update Compensation</h2>
+   <form (submit) = "updateEmp(compensation.value, 1)" 
+   >
+     <mat-form-field>
+       <input
+         matInput
+         placeholder="First Name"
+         [value]="data.reporter.firstName"
+         disabled
+       />
+     </mat-form-field>
+ 
+     <mat-form-field>
+       <input
+         matInput
+         placeholder="Last Name"
+         [value]="data.reporter.lastName"
+         disabled
+       />
+     </mat-form-field>
+     <mat-form-field>
+       <input matInput placeholder="Title" [value]="data.reporter.position" disabled />
+     </mat-form-field>
+     <mat-form-field>
+       <input
+         matInput
+         placeholder="Compensation"
+         required
+         type="number"
+         [value]="data.reporter.compensation || null"
+         #compensation
+       />
+     </mat-form-field>
+     <mat-dialog-actions>
+       <button
+         mat-raised-button
+         [disabled]="
+           compensation.value > 0 && !(compensation.value == data.compensation)
+             ? false
+             : true
+         "
+       >
+         Save
+       </button>
+       <button mat-button mat-dialog-close>Cancel</button>
+     </mat-dialog-actions>
+   </form>
+ </div>
+</div>
+</div>
